@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace Player
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
     public class PlayerMovement : MonoBehaviour
     {
         [Header("Character Settings")]
@@ -18,25 +19,21 @@ namespace Player
         [SerializeField]
         private float jumpHeight = 5f;
 
-        [Header("Animation & Sounds")]
-        [SerializeField]
-        private Animator characterAnimator;
-
         [Header("Grounding Detection")]
         [SerializeField]
         private Transform lowerContact;
         
         [SerializeField]
         private LayerMask detectionLayer;
+        
+        private static readonly int JumpingAnimation = Animator.StringToHash("isJumping");
+        private static readonly int RunningAnimation = Animator.StringToHash("isRunning");
+        private static readonly int IdleAnimation = Animator.StringToHash("isIdle");
 
-        private readonly float groundCheckCircle = 0.2f;
-        private readonly float jumpTimer = 0.3f;
-
-        private readonly string jumpingAnimationFlag = "isJumping";
-        private readonly string runningAnimationFlag = "isRunning";
-        private readonly string idleAnimationFlag = "isIdle";
-
-        private Rigidbody2D rigidbody2D;
+        private const float GroundCheckCircle = 0.2f;
+        private const float JumpTimer = 0.3f;
+        private new Rigidbody2D rigidbody2D;
+        private Animator characterAnimator;
         private float horizontalMovement;
         private float jumpCountdown;
         private float characterSpeed;
@@ -44,6 +41,17 @@ namespace Player
         private void Awake()
         {
             rigidbody2D = GetComponent<Rigidbody2D>();
+            characterAnimator = GetComponent<Animator>();
+        }
+
+        private void OnDestroy()
+        {
+            ResetFlags();
+        }
+
+        private void OnDisable()
+        {
+            ResetFlags();
         }
 
         private void Update()
@@ -85,16 +93,16 @@ namespace Player
             var isGrounded = IsGrounded();
             var isJumping = !isGrounded;
             var isWalking = !isJumping && Input.GetButton("Horizontal");
-            characterAnimator.SetBool(jumpingAnimationFlag, isJumping);
-            characterAnimator.SetBool(runningAnimationFlag, isWalking);
+            characterAnimator.SetBool(JumpingAnimation, isJumping);
+            characterAnimator.SetBool(RunningAnimation, isWalking);
 
             if (!isJumping && !isWalking)
             {
-                characterAnimator.SetBool(idleAnimationFlag, true);
+                characterAnimator.SetBool(IdleAnimation, true);
             }
             else
             {
-                characterAnimator.SetBool(idleAnimationFlag, false);
+                characterAnimator.SetBool(IdleAnimation, false);
             }
         }
 
@@ -108,7 +116,7 @@ namespace Player
             if (IsGrounded() && Input.GetButtonDown("Jump"))
             {
                 rigidbody2D.velocity = Vector2.up * jumpHeight;
-                jumpCountdown = jumpTimer;
+                jumpCountdown = JumpTimer;
             }
 
             if (Input.GetButton("Jump") && jumpCountdown > 0f)
@@ -120,7 +128,14 @@ namespace Player
 
         private bool IsGrounded()
         {
-          return Physics2D.OverlapCircle(lowerContact.position, groundCheckCircle, detectionLayer);
+          return Physics2D.OverlapCircle(lowerContact.position, GroundCheckCircle, detectionLayer);
+        }
+
+        private void ResetFlags()
+        {
+            characterAnimator.SetBool(JumpingAnimation, false);
+            characterAnimator.SetBool(RunningAnimation, false);
+            characterAnimator.SetBool(IdleAnimation, false);
         }
     }
 }
