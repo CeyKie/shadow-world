@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Player
@@ -73,6 +72,9 @@ namespace Player
         private void SetMovementOfCharacter()
         {
             horizontalMovement = Input.GetAxis("Horizontal");
+            // var rotation = horizontalMovement >= 0f ? Vector2.zero : new Vector2(0, -180);
+            // gameObject.transform.Rotate(rotation);
+            
             characterSprite.flipX = horizontalMovement < 0;
             characterSpeed = walkSpeed;
 
