@@ -34,7 +34,7 @@ namespace Player
 
         private void OnDestroy()
         {
-            ResetFlags();
+            ResetFlags(false);
         }
 
         private void Update()
@@ -75,14 +75,19 @@ namespace Player
         {
             playerMovement.enabled = false;
             characterAnimator.SetTrigger(Death);
+            ResetFlags(true);
             yield return new WaitForSecondsRealtime(1.1f);
             
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        private void ResetFlags()
+        private void ResetFlags(bool isDead)
         {
-            characterAnimator.ResetTrigger(Death);
+            if (!isDead)
+            {
+                characterAnimator.ResetTrigger(Death);
+            }
+
             characterAnimator.ResetTrigger(Hit);
             characterAnimator.ResetTrigger(Attack);
         }
