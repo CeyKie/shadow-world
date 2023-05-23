@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -61,6 +63,20 @@ namespace Player
         private void FixedUpdate()
         {
             MoveCharacter();
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            // When player hits the finish, next scene should be loaded.
+            if (!col.gameObject.CompareTag("Finish"))
+            {
+                return;
+            }
+
+            var nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            var hasNextScene = SceneManager.sceneCountInBuildSettings > nextSceneIndex;
+
+            SceneManager.LoadScene(hasNextScene ? nextSceneIndex : 0);
         }
 
         private void MoveCharacter()
