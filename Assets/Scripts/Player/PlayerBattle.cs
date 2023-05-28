@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Enemy;
 using UnityEngine;
@@ -10,9 +9,6 @@ namespace Player
     public class PlayerBattle : MonoBehaviour
     {
         [SerializeField]
-        private float initialHealth = 2f;
-        
-        [SerializeField]
         private float damage = 1f;
         public float Damage => damage;
 
@@ -22,13 +18,13 @@ namespace Player
         
         private Animator characterAnimator;
         private PlayerMovement playerMovement;
-        private float health;
+        private HealthSystem healthSystem;
 
         private void Awake()
         {
             characterAnimator = GetComponent<Animator>();
             playerMovement = GetComponent<PlayerMovement>();
-            health = initialHealth;
+            healthSystem = FindObjectOfType<HealthSystem>();
             playerMovement.enabled = true;
         }
 
@@ -44,7 +40,7 @@ namespace Player
                 characterAnimator.SetTrigger(Attack);
             }
         }
-        
+
         private void OnCollisionEnter2D(Collision2D col)
         {
             var enemyBehavior = col.gameObject.GetComponent<EnemyBehavior>();
@@ -59,16 +55,11 @@ namespace Player
 
         private void TakeDamage(float hitPoints)
         {
-            // TODO: Always round to full numbers / .5 numbers
-            var newHealth = Mathf.Clamp(health - hitPoints, 0, initialHealth);
-
-            if (health <= 0 || newHealth <= 0)
+            var health  = healthSystem.TakeDamage(hitPoints);
+            if (health <= 0)
             {
                 StartCoroutine(Die());
-                return;
             }
-
-            health = newHealth;
         }
 
         private IEnumerator Die()
