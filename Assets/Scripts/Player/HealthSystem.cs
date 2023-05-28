@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using Basics;
 using UnityEngine;
 
@@ -29,7 +28,6 @@ namespace Player
         
         public float TakeDamage(float hitPoints)
         {
-            // TODO: Always round to full numbers / .5 numbers
             health = (int) Math.Clamp(health - hitPoints, 0, initialHealth);
             var healthPoint = healthPoints.GetPoolObject(health.ToString());
             healthPoint.LooseLife();

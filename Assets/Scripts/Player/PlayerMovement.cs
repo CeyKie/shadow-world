@@ -1,4 +1,4 @@
-using System;
+using Basics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +26,14 @@ namespace Player
         
         [SerializeField]
         private LayerMask detectionLayer;
+
+        [Header("SFX")]
+        [SerializeField]
+        private AudioSource moveSfx;
+
+        [Header("SFX")]
+        [SerializeField]
+        private AudioSource jumpSfx;
         
         private static readonly int JumpingAnimation = Animator.StringToHash("isJumping");
         private static readonly int RunningAnimation = Animator.StringToHash("isRunning");
@@ -33,6 +41,7 @@ namespace Player
 
         private const float GroundCheckCircle = 0.2f;
         private const float JumpTimer = 0.3f;
+
         private new Rigidbody2D rigidbody2D;
         private Animator characterAnimator;
         private float horizontalMovement;
@@ -103,13 +112,12 @@ namespace Player
             }
 
             Jump();
-            SetupAnimations();
+            SetupAnimationsAndSfx();
         }
 
-        private void SetupAnimations()
+        private void SetupAnimationsAndSfx()
         {
-            var isGrounded = IsGrounded();
-            var isJumping = !isGrounded;
+            var isJumping = !IsGrounded();
             var isWalking = !isJumping && Input.GetButton("Horizontal");
             characterAnimator.SetBool(JumpingAnimation, isJumping);
             characterAnimator.SetBool(RunningAnimation, isWalking);
@@ -117,9 +125,18 @@ namespace Player
             if (!isJumping && !isWalking)
             {
                 characterAnimator.SetBool(IdleAnimation, true);
+                AudioController.StopSfx(moveSfx);
             }
             else
             {
+                if (!isWalking)
+                {
+                    AudioController.StopSfx(moveSfx);
+                }
+                else
+                {
+                    AudioController.PlayOnLoopSfx(moveSfx);
+                }
                 characterAnimator.SetBool(IdleAnimation, false);
             }
         }
@@ -133,6 +150,7 @@ namespace Player
         {
             if (IsGrounded() && Input.GetButtonDown("Jump"))
             {
+                AudioController.PlayOneTimeSfx(jumpSfx);
                 rigidbody2D.velocity = Vector2.up * jumpHeight;
                 jumpCountdown = JumpTimer;
             }

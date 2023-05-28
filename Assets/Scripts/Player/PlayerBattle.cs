@@ -1,4 +1,5 @@
 using System.Collections;
+using Basics;
 using Enemy;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,18 @@ namespace Player
         [SerializeField]
         private float damage = 1f;
         public float Damage => damage;
+
+        [SerializeField]
+        private AudioSource swordSwingSfx;
+
+        [SerializeField]
+        private AudioSource hitSfx;
+
+        [SerializeField]
+        private AudioSource deathSfx;
+
+        [SerializeField]
+        private SwordCollisionDetection swordCollisionDetection;
 
         private static readonly int Attack = Animator.StringToHash("attack");
         private static readonly int Death = Animator.StringToHash("death");
@@ -35,22 +48,34 @@ namespace Player
 
         private void Update()
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (!Input.GetButtonDown("Fire1"))
             {
-                characterAnimator.SetTrigger(Attack);
+                return;
             }
+
+            characterAnimator.SetTrigger(Attack);
+            StartCoroutine(TriggerSwordCollision());
         }
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            var enemyBehavior = col.gameObject.GetComponent<EnemyBehavior>();
+            var enemyBehavior = col.gameObject.GetComponent<EnemyBattle>();
             if (!col.gameObject.CompareTag("Enemy") || enemyBehavior == null)
             {
                 return;
             }
             
-            characterAnimator.SetTrigger(Hit);
             TakeDamage(enemyBehavior.Damage);
+        }
+
+        private IEnumerator TriggerSwordCollision()
+        {
+            yield return new WaitForSeconds(0.2f);
+            AudioController.PlayOneTimeSfx(swordSwingSfx);
+            yield return new WaitForSeconds(0.35f);
+            swordCollisionDetection.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            swordCollisionDetection.gameObject.SetActive(false);
         }
 
         private void TakeDamage(float hitPoints)
@@ -59,13 +84,18 @@ namespace Player
             if (health <= 0)
             {
                 StartCoroutine(Die());
+                return;
             }
+
+            characterAnimator.SetTrigger(Hit);
+            AudioController.PlayOneTimeSfx(hitSfx);
         }
 
         private IEnumerator Die()
         {
             playerMovement.enabled = false;
             characterAnimator.SetTrigger(Death);
+            AudioController.PlayOneTimeSfx(deathSfx);
             ResetFlags(true);
             yield return new WaitForSecondsRealtime(1.1f);
             

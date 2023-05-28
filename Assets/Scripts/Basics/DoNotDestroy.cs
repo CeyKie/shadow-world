@@ -5,6 +5,18 @@ namespace Basics
 {
     public class DoNotDestroy : MonoBehaviour
     {
+        void Awake()
+        {
+            var objs = FindObjectsOfType<DoNotDestroy>();
+
+            if (objs.Length > 1)
+            {
+                Destroy(gameObject);
+            }
+
+            DontDestroyOnLoad(gameObject);
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.R))
