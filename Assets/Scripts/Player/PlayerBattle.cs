@@ -32,6 +32,7 @@ namespace Player
         private Animator characterAnimator;
         private PlayerMovement playerMovement;
         private HealthSystem healthSystem;
+        private bool isPlayerActive;
 
         private void Awake()
         {
@@ -39,6 +40,7 @@ namespace Player
             playerMovement = GetComponent<PlayerMovement>();
             healthSystem = FindObjectOfType<HealthSystem>();
             playerMovement.enabled = true;
+            isPlayerActive = true;
         }
 
         private void OnDestroy()
@@ -49,6 +51,11 @@ namespace Player
         private void Update()
         {
             if (!Input.GetButtonDown("Fire1"))
+            {
+                return;
+            }
+
+            if (!isPlayerActive)
             {
                 return;
             }
@@ -94,6 +101,7 @@ namespace Player
         private IEnumerator Die()
         {
             playerMovement.enabled = false;
+            isPlayerActive = false;
             characterAnimator.SetTrigger(Death);
             AudioController.PlayOneTimeSfx(deathSfx);
             ResetFlags(true);

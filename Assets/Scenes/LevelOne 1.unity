@@ -850,7 +850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206190902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0839763, y: 0.02770257, z: -10}
+  m_LocalPosition: {x: -1.0836201, y: 0.027697086, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1740,7 +1740,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2174250782229851817, guid: 045661a1a52fe4747b127dcff311a2c6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.31
+      value: -7.22
       objectReference: {fileID: 0}
     - target: {fileID: 2174250782229851817, guid: 045661a1a52fe4747b127dcff311a2c6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1828,7 +1828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2174250783434610339, guid: 045661a1a52fe4747b127dcff311a2c6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
-      value: -6.9109397
+      value: -6.7024684
       objectReference: {fileID: 0}
     - target: {fileID: 2174250783434610339, guid: 045661a1a52fe4747b127dcff311a2c6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
@@ -1836,11 +1836,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2174250783434610339, guid: 045661a1a52fe4747b127dcff311a2c6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
-      value: -6.883458
+      value: -6.727105
       objectReference: {fileID: 0}
     - target: {fileID: 2174250783434610339, guid: 045661a1a52fe4747b127dcff311a2c6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
-      value: -4.1549983
+      value: -4.2592344
       objectReference: {fileID: 0}
     - target: {fileID: 2174250783434610339, guid: 045661a1a52fe4747b127dcff311a2c6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
@@ -1848,7 +1848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2174250783434610339, guid: 045661a1a52fe4747b127dcff311a2c6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
-      value: -4.159336
+      value: -4.2635727
       objectReference: {fileID: 0}
     - target: {fileID: 2174250783434610339, guid: 045661a1a52fe4747b127dcff311a2c6, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
@@ -13482,10 +13482,10 @@ RectTransform:
   m_Father: {fileID: 493287505}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 35, y: -35}
-  m_SizeDelta: {x: 0, y: 70}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 70, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2017658536
 MonoBehaviour:
