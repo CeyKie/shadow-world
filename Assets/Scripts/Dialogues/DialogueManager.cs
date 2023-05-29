@@ -18,7 +18,10 @@ namespace Dialogues
         private void Awake()
         {
             var doNotDestroy = FindObjectOfType<DoNotDestroy>();
-            Destroy(doNotDestroy.gameObject);
+            if (doNotDestroy != null)
+            {
+                Destroy(doNotDestroy.gameObject);
+            }
             
             if (dialogues.Count <= 0)
             {

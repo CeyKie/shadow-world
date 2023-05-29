@@ -12,5 +12,11 @@ namespace Basics
 
             SceneManager.LoadScene(hasNextScene ? nextSceneIndex : 0);
         }
+        public static void LoadSpecificScene(int sceneIndex)
+        {
+            var hasNextScene = SceneManager.sceneCountInBuildSettings > sceneIndex;
+
+            SceneManager.LoadScene(hasNextScene ? sceneIndex : 0);
+        }
     }
 }
