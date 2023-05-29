@@ -11,6 +11,9 @@ namespace Enemy
         private bool isShadowEnemy;
 
         [SerializeField]
+        private SpriteRenderer spriteRenderer;
+
+        [SerializeField]
         private int initialHealth = 1;
 
         [SerializeField]
@@ -20,15 +23,28 @@ namespace Enemy
         [SerializeField]
         private AudioSource hitSfx;
 
-        private float health;
-
-
         private WorldModel worldModel;
+        private float health;
 
         private void Awake()
         {
             worldModel = FindObjectOfType<WorldModel>();
             health = initialHealth;
+        }
+
+        private void Update()
+        {
+            var spriteRendererColor = spriteRenderer.color;
+            if ((worldModel.isShadowWorld && isShadowEnemy) || (!worldModel.isShadowWorld && !isShadowEnemy))
+            {
+                spriteRendererColor.a = 1f;
+            }
+
+            if ((worldModel.isShadowWorld && !isShadowEnemy) || (!worldModel.isShadowWorld && isShadowEnemy))
+            {
+                spriteRendererColor.a = 0.4f;
+            }
+            spriteRenderer.color = spriteRendererColor;
         }
 
         private void OnTriggerEnter2D(Collider2D col)

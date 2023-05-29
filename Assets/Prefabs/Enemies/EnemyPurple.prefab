@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2165482107019707059, guid: 1201cffee54d31149a5bfad5b51b5efe, type: 3}
+      propertyPath: isShadowEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2882514956195907457, guid: 1201cffee54d31149a5bfad5b51b5efe, type: 3}
       propertyPath: isShadowEnemy
       value: 1

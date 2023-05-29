@@ -5,16 +5,14 @@ namespace World
 {
     public class WorldState : MonoBehaviour
     {
+        [SerializeField]
+        private GameObject filterUiEffect;
+        
         private WorldModel worldModel;
-        private Camera mainCamera;
-
-        private Color startColor;
 
         private void Awake()
         {
             worldModel = FindObjectOfType<WorldModel>();
-            mainCamera = FindObjectOfType<Camera>();
-            startColor = mainCamera.backgroundColor;
         }
 
         // Update is called once per frame
@@ -26,7 +24,7 @@ namespace World
             }
             
             worldModel.SwitchWorld();
-            mainCamera.backgroundColor =  worldModel.isShadowWorld ? Color.black : startColor;
+            filterUiEffect.SetActive(worldModel.isShadowWorld);
         }
         
     }

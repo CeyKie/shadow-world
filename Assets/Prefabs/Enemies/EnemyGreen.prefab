@@ -32,7 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1567127107420159727}
+  - {fileID: 3734065025898024441}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isShadowEnemy: 0
+  spriteRenderer: {fileID: 8188269313057458980}
   initialHealth: 1
   damage: 1
   hitSfx: {fileID: 8769026311810541364}
@@ -137,9 +138,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1567127107420159727}
+  - component: {fileID: 3734065025898024441}
   - component: {fileID: 8188269313057458980}
   - component: {fileID: 8769026311810541364}
+  - component: {fileID: 7453059938463023488}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -147,8 +149,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1567127107420159727
-Transform:
+--- !u!224 &3734065025898024441
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -162,6 +164,11 @@ Transform:
   m_Father: {fileID: 2882514956195907462}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &8188269313057458980
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -310,3 +317,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!222 &7453059938463023488
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6173577611267742453}
+  m_CullTransparentMesh: 1
