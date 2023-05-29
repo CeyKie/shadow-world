@@ -6,7 +6,7 @@ using World;
 
 namespace Menu
 {
-    public class PauseMenu : MonoBehaviour
+    public class PauseControl : MonoBehaviour
     {
         private PlayerMovement playerMovement;
         private PlayerBattle playerBattle;

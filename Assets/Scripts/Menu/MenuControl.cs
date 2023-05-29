@@ -7,16 +7,16 @@ namespace Menu
 {
     public class MenuControl : MonoBehaviour
     {
-        private PauseMenu pauseMenu;
+        private PauseControl pauseControl;
 
         private void Awake()
         {
-            pauseMenu = FindObjectOfType<PauseMenu>();
+            pauseControl = FindObjectOfType<PauseControl>();
         }
 
         public void Continue()
         {
-            pauseMenu.gameObject.SetActive(false);
+            pauseControl.gameObject.SetActive(false);
         }
         
         public void RestartLevel()

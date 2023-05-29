@@ -308,6 +308,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5526481863385531317, guid: 8abb2ac7253e6a14394881f9af269814, type: 3}
+      propertyPath: pauseControl
+      value: 
+      objectReference: {fileID: 428259541}
     - target: {fileID: 8358059597245472077, guid: 8abb2ac7253e6a14394881f9af269814, type: 3}
       propertyPath: dialogues.Array.size
       value: 4
@@ -423,6 +427,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8358059597760388523, guid: 8abb2ac7253e6a14394881f9af269814, type: 3}
   m_PrefabInstance: {fileID: 428259539}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &428259541 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5055928244638801830, guid: 8abb2ac7253e6a14394881f9af269814, type: 3}
+  m_PrefabInstance: {fileID: 428259539}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05490a8c383faed41aadf39a936a26b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &777527239
 GameObject:
   m_ObjectHideFlags: 0

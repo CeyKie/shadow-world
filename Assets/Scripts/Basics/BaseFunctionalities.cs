@@ -7,7 +7,7 @@ namespace Basics
     public class BaseFunctionalities : MonoBehaviour
     {
         [SerializeField]
-        private PauseMenu pauseMenu;
+        private PauseControl pauseControl;
 
         private void Update()
         {
@@ -21,13 +21,13 @@ namespace Basics
                 return;
             }
 
-            if (pauseMenu == null)
+            if (pauseControl == null)
             {
                 Application.Quit();
                 return;
             }
 
-            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
+            pauseControl.gameObject.SetActive(!pauseControl.gameObject.activeSelf);
         }
     }
 }

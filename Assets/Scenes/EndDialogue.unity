@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a1333a2467469c9da663cd60932732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: 'But all you can is deep fear in their eyes.
+  text: 'But all you can see is deep fear in their eyes.
 
     As if all hope is already
     gone.
@@ -480,9 +480,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5526481863385531317, guid: 8abb2ac7253e6a14394881f9af269814, type: 3}
+      propertyPath: pauseControl
+      value: 
+      objectReference: {fileID: 8358059597263614117}
     - target: {fileID: 8358059597245472077, guid: 8abb2ac7253e6a14394881f9af269814, type: 3}
       propertyPath: dialogues.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8358059597245472077, guid: 8abb2ac7253e6a14394881f9af269814, type: 3}
       propertyPath: dialogues.Array.data[0]
@@ -500,6 +504,10 @@ PrefabInstance:
       propertyPath: dialogues.Array.data[3]
       value: 
       objectReference: {fileID: 533722100}
+    - target: {fileID: 8358059597245472077, guid: 8abb2ac7253e6a14394881f9af269814, type: 3}
+      propertyPath: dialogues.Array.data[4]
+      value: 
+      objectReference: {fileID: 1865899837}
     - target: {fileID: 8358059597370296065, guid: 8abb2ac7253e6a14394881f9af269814, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -590,3 +598,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8abb2ac7253e6a14394881f9af269814, type: 3}
+--- !u!114 &8358059597263614117 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5055928244638801830, guid: 8abb2ac7253e6a14394881f9af269814, type: 3}
+  m_PrefabInstance: {fileID: 8358059597263614116}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05490a8c383faed41aadf39a936a26b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
