@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LevelOne 1.unity
+    path: Assets/Scenes/StartDialogue.unity
+    guid: d5a934c2d9ebc944e8cba52a0109a3b3
+  - enabled: 1
+    path: Assets/Scenes/LevelOne.unity
     guid: eb5462bad553bdf4b8b056e1a3c0af32
+  - enabled: 1
+    path: Assets/Scenes/EndDialogue.unity
+    guid: f8aab5db4385fc64a88b106e20196248
   m_configObjects: {}

@@ -1,6 +1,5 @@
 using Basics;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -82,10 +81,7 @@ namespace Player
                 return;
             }
 
-            var nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-            var hasNextScene = SceneManager.sceneCountInBuildSettings > nextSceneIndex;
-
-            SceneManager.LoadScene(hasNextScene ? nextSceneIndex : 0);
+            SceneHelper.LoadNextOrFirstScene();
         }
 
         private void MoveCharacter()

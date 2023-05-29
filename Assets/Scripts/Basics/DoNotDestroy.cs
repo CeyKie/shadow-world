@@ -5,7 +5,7 @@ namespace Basics
 {
     public class DoNotDestroy : MonoBehaviour
     {
-        void Awake()
+        private void Awake()
         {
             var objs = FindObjectsOfType<DoNotDestroy>();
 
